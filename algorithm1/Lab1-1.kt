@@ -1,48 +1,25 @@
 fun main(args: Array<String>) {
-    // Введите размеры массивов M и N с клавиатуры
-    println("Введите размер массива A:")
-    val m = readlnOrNull()?.toInt() ?: 0  //If the user types null, then the null is changed to 0 (Elvis operator)
+    println("Enter the length of the array A: " ) //Sprashivaem dlinnu massiva A
+    val m: Int = readlnOrNull()?.toInt() ?: 0 //readlnOrNull (funkcia protiv nullPointerExeption) ?: (Vse chto null prevrashayet v 0)
 
-    println("Введите размер массива B:")
-    val n = readlnOrNull()?.toInt() ?: 0
+    println("Enter the length of an array B: ") //Sprashivaem dlinnu massivs B
+    val n: Int = readlnOrNull()?.toInt() ?: 0 //readlnOrNull (funkcia protiv nullPointerExeption) ?: (Vse chto null prevrashayet v 0)
 
-    // Create массивы A and B fill the elements from keyboard
-    val a = mutableListOf<Int>()
-    val b = mutableListOf<Int>()
-    val c = mutableListOf<Int>()
+    val a = IntArray(m) //Ne dinamicheski massiv
+    val b = IntArray(n)
+    var c = IntArray(0)
 
-    println("Введите элементы массива A:") //We are asking the user to input the elements of an array A.
-    for (i in 0 until m) {
-        val element = readlnOrNull()?.toInt() ?: 0
-        a.add(element)
+    println("Enter the numbers in array A: ") //Elementy massiva A
+    for (i in 0 until m) { //Cikl dlya sprashivaniya elementov massyva A
+        a[i] = readlnOrNull()?.toInt() ?:0
     }
-
-    println("Введите элементы массива B:") //Same for B
-    for (i in 0 until n) {
-        val element = readlnOrNull()?.toInt() ?: 0
-        b.add(element)
+    println("Enter the numbers in array B: ")
+    for (i in 0 until n) { //Cikl dlya sprashivaniya elementov massiva B
+        b[i] = readlnOrNull()?.toInt() ?: 0
     }
-
-    val lengthA = a.size  //No need for this, asking the length of array A and B merged.
-    val lengthB = b.size
-    val lengthSum = lengthA + lengthB
-
-    println("Size of the third array is: $lengthSum")  //Length of an array but with duplicates.
-
-    c += a
-    c += b
-    val distinctC = c.distinct()
-
-    for (i in 0 until lengthSum) {
-        for (j in i + 1 until lengthSum) {
-            if (c[i] > c[j]) {
-                val swap = c[i]
-                c[i] = c[j]
-                c[j] = swap
-            }
-        }
-    }
-
-    // Result
-    println("Общие элементы массивов A и B без повторений: $distinctC")
+    c += a //Sumiruyem A massiv k C massivu
+    c += b //Sumiruyem B massiv k C massivu
+    val distinctC = c.distinct() //Smotrim esli est povtornye elementy v massive C
+    print("Array C: ")
+    print(distinctC) //Resultat, Poluchem massiv bez povtorenii minimal'nogo razmera
 }
