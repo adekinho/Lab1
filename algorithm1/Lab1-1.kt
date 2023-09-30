@@ -1,4 +1,4 @@
-fun main(args: Array<String>) {
+fun main(args: Array<String>) { //Adilet Mukhamedgalym
     println("Enter the length of the array A: " ) //Sprashivaem dlinnu massiva A
     val m: Int = readlnOrNull()?.toInt() ?: 0 //readlnOrNull (funkcia protiv nullPointerExeption) ?: (Vse chto null prevrashayet v 0)
 
